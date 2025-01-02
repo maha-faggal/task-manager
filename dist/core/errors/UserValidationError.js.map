@@ -1,0 +1,1 @@
+{"version":3,"file":"UserValidationError.js","sourceRoot":"","sources":["../../../src/core/errors/UserValidationError.ts"],"names":[],"mappings":";;;AAAA,MAAa,mBAAoB,SAAQ,KAAK;IAC1C,YAAY,OAAe;QACvB,KAAK,CAAC,OAAO,CAAC,CAAC;QACf,IAAI,CAAC,IAAI,GAAG,qBAAqB,CAAC;IACtC,CAAC;CACJ;AALD,kDAKC"}

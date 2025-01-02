@@ -1,15 +1,32 @@
 {
   "compilerOptions": {
-    "target": "ES2020",        // Use modern JavaScript features
-    "module": "commonjs",      // Use Node.js module system
-    "strict": true,           // Enable strict type checking
-    "esModuleInterop": true,  // Better import/export compatibility
-    "skipLibCheck": true,     // Skip type checking of declaration files
-    "forceConsistentCasingInFileNames": true,  // Ensure consistent file naming
-    "outDir": "./dist",       // Output compiled files here
-    "rootDir": "./src",       // Source files are here
-    "sourceMap": true         // Enable debugging
+    "target": "ES2020",
+    // Use modern JavaScript features
+    "module": "commonjs",
+    // Use Node.js module system
+    "strict": true,
+    // Enable strict type checking
+    "esModuleInterop": true,
+    // Better import/export compatibility
+    "skipLibCheck": true,
+    // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true,
+    // Ensure consistent file naming
+    "outDir": "./dist",
+    // Output compiled files here
+    "rootDir": "./src",
+    // Source files are here
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*"],    // Include all files in src
-  "exclude": ["node_modules", "**/*.test.ts"]  // Exclude node_modules and test files
+  "include": [
+    "src/**/*"
+  ],
+  // Include all files in src
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ]
+  // Exclude node_modules and test files
 }

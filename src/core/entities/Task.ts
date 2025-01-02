@@ -1,15 +1,32 @@
 import {ITask, TaskStatus} from "../interfaces/ITask";
 import {IUser} from "../interfaces/IUser";
+import {Entity, ManyToOne, PrimaryKey, Property} from "@mikro-orm/core";
+import {User} from "./User";
 
-
+@Entity()
 export class Task implements ITask {
+    @PrimaryKey()
     private readonly _id: string;
+
+    @Property()
     private _title: string;
+
+    @Property()
     private _description: string;
+
+    @Property()
     private _status: TaskStatus;
+
+    @ManyToOne(() => User)
     private readonly _createdBy: IUser;
+
+    @ManyToOne(() => User)
     private _assignedTo?: IUser;
+
+    @Property()
     private readonly _createdAt: Date;
+
+    @Property({onUpdate: () => new Date()})
     private _updatedAt: Date;
 
     constructor(

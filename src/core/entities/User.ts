@@ -1,13 +1,24 @@
 import {IUser} from '../interfaces/IUser';
 import {ValidationUtils} from "../../utils/validation";
 import {UserValidationError} from "../errors/UserValidationError";
+import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
 
+@Entity()
 export class User implements IUser {
 
+    @PrimaryKey()
     private readonly _id: string;
+
+    @Property()
     private readonly _email: string;
+
+    @Property()
     private readonly _password: string;
+
+    @Property()
     private readonly _createdAt: Date;
+
+    @Property()
     private _name: string;
 
 
