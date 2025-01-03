@@ -2,27 +2,28 @@ import {IUser} from '../interfaces/IUser';
 import {ValidationUtils} from "../../utils/validation";
 import {UserValidationError} from "../errors/UserValidationError";
 import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
+import {v4 as uuidv4} from 'uuid'; // Make sure to install: npm install uuid @types/uuid
 
 @Entity({tableName: 'users'})
 export class User implements IUser {
 
-    @PrimaryKey()
-    private readonly _id: string;
+    @PrimaryKey({fieldName: "id"})
+    private _id: string = uuidv4();
 
-    @Property()
+    @Property({fieldName: "email"})
     private readonly _email: string;
 
-    @Property()
+    @Property({fieldName: "password"})
     private readonly _password: string;
 
-    @Property()
+    @Property({fieldName: "created_at"})
     private readonly _createdAt: Date;
 
-    @Property()
+    @Property({fieldName: "name"})
     private _name: string;
 
 
-    constructor(id: string, email: string, password: string, name: string) {
+    constructor(email: string, password: string, name: string) {
 
         if (ValidationUtils.isValidEmail(email) === false) {
             throw new UserValidationError('Invalid email address')
@@ -36,7 +37,6 @@ export class User implements IUser {
             throw new UserValidationError('Invalid name')
         }
 
-        this._id = id;
         this._email = email;
         this._password = password;
         this._name = name;
@@ -63,5 +63,9 @@ export class User implements IUser {
 
     get createdAt(): Date {
         return this._createdAt;
+    }
+
+    set name(name: string) {
+        this._name = name;
     }
 }

@@ -13,8 +13,10 @@ exports.User = void 0;
 const validation_1 = require("../../utils/validation");
 const UserValidationError_1 = require("../errors/UserValidationError");
 const core_1 = require("@mikro-orm/core");
+const uuid_1 = require("uuid"); // Make sure to install: npm install uuid @types/uuid
 let User = class User {
-    constructor(id, email, password, name) {
+    constructor(email, password, name) {
+        this._id = (0, uuid_1.v4)();
         if (validation_1.ValidationUtils.isValidEmail(email) === false) {
             throw new UserValidationError_1.UserValidationError('Invalid email address');
         }
@@ -24,7 +26,6 @@ let User = class User {
         if (name.trim().length === 0) {
             throw new UserValidationError_1.UserValidationError('Invalid name');
         }
-        this._id = id;
         this._email = email;
         this._password = password;
         this._name = name;
@@ -46,30 +47,33 @@ let User = class User {
     get createdAt() {
         return this._createdAt;
     }
+    set name(name) {
+        this._name = name;
+    }
 };
 exports.User = User;
 __decorate([
-    (0, core_1.PrimaryKey)(),
+    (0, core_1.PrimaryKey)({ fieldName: "id" }),
     __metadata("design:type", String)
 ], User.prototype, "_id", void 0);
 __decorate([
-    (0, core_1.Property)(),
+    (0, core_1.Property)({ fieldName: "email" }),
     __metadata("design:type", String)
 ], User.prototype, "_email", void 0);
 __decorate([
-    (0, core_1.Property)(),
+    (0, core_1.Property)({ fieldName: "password" }),
     __metadata("design:type", String)
 ], User.prototype, "_password", void 0);
 __decorate([
-    (0, core_1.Property)(),
+    (0, core_1.Property)({ fieldName: "created_at" }),
     __metadata("design:type", Date)
 ], User.prototype, "_createdAt", void 0);
 __decorate([
-    (0, core_1.Property)(),
+    (0, core_1.Property)({ fieldName: "name" }),
     __metadata("design:type", String)
 ], User.prototype, "_name", void 0);
 exports.User = User = __decorate([
     (0, core_1.Entity)({ tableName: 'users' }),
-    __metadata("design:paramtypes", [String, String, String, String])
+    __metadata("design:paramtypes", [String, String, String])
 ], User);
 //# sourceMappingURL=User.js.map
