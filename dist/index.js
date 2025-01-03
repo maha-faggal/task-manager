@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const database_1 = require("./infrastructure/database/database");
+const DatabaseConnection_1 = require("./infrastructure/database/DatabaseConnection");
 async function bootstrap() {
     try {
-        const orm = await (0, database_1.initializeDatabase)();
-        console.log("Connected to database");
+        await DatabaseConnection_1.DatabaseConnection.initialize();
+        // Rest of your application setup...
     }
-    catch (err) {
-        console.error("Failed to connect to database", err);
+    catch (error) {
+        console.error('Failed to start application:', error);
         process.exit(1);
     }
 }
