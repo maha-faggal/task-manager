@@ -12,7 +12,9 @@ class DatabaseConnection {
         if (!DatabaseConnection.instance) {
             DatabaseConnection.instance = new DatabaseConnection();
             await DatabaseConnection.instance.connect();
-            console.log('✅ Database initialized successfully');
+            const generator = DatabaseConnection.instance.orm.getSchemaGenerator();
+            await generator.updateSchema(); // This creates/updates tables
+            console.log('✅ Database initialized successfully and schema updated');
         }
     }
     static async getInstance() {

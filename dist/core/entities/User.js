@@ -69,7 +69,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "_name", void 0);
 exports.User = User = __decorate([
-    (0, core_1.Entity)(),
+    (0, core_1.Entity)({ tableName: 'users' }),
     __metadata("design:paramtypes", [String, String, String, String])
 ], User);
 //# sourceMappingURL=User.js.map

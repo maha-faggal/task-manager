@@ -4,7 +4,6 @@ const DatabaseConnection_1 = require("./infrastructure/database/DatabaseConnecti
 async function bootstrap() {
     try {
         await DatabaseConnection_1.DatabaseConnection.initialize();
-        // Rest of your application setup...
     }
     catch (error) {
         console.error('Failed to start application:', error);

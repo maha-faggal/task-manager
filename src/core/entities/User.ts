@@ -3,7 +3,7 @@ import {ValidationUtils} from "../../utils/validation";
 import {UserValidationError} from "../errors/UserValidationError";
 import {Entity, PrimaryKey, Property} from '@mikro-orm/core';
 
-@Entity()
+@Entity({tableName: 'users'})
 export class User implements IUser {
 
     @PrimaryKey()
