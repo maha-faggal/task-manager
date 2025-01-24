@@ -19,7 +19,6 @@ export class DatabaseConnection {
             const generator = DatabaseConnection.instance.orm.getSchemaGenerator();
             await generator.updateSchema();  // This creates/updates tables
 
-            console.log('✅ Database initialized successfully and schema updated');
         }
     }
 
